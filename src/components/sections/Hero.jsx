@@ -16,31 +16,31 @@ export function Hero() {
     <Section className="pb-20 pt-8 sm:pb-28 sm:pt-12 lg:pb-32 lg:pt-16">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-x-8">
-          <Reveal className="lg:col-span-11">
-            <h1 className="font-display text-[clamp(5rem,12.5vw,12rem)] font-normal leading-[0.73] tracking-[-0.065em]">
+          <Reveal className="lg:col-span-8 lg:row-start-1 lg:self-center">
+            <h1 className="font-display text-[clamp(5rem,10vw,9rem)] font-normal leading-[0.78] tracking-[-0.06em]">
               Shruti <span className="italic text-olive-dark">Kakani</span>
             </h1>
           </Reveal>
 
-          <Reveal delay={0.08} className="mt-12 lg:col-span-7 lg:row-start-2 lg:mt-20 lg:pr-8">
-            <p className="max-w-[12ch] font-display text-[clamp(3.25rem,6.2vw,6.7rem)] leading-[0.91] tracking-[-0.048em]">
+          <Reveal delay={0.08} className="mt-12 lg:col-span-7 lg:row-start-2 lg:mt-12 lg:pr-8">
+            <p className="max-w-[12ch] font-display text-[clamp(3.25rem,5.2vw,5.75rem)] leading-[0.93] tracking-[-0.045em]">
               Food technology, product development &amp; research.
             </p>
           </Reveal>
 
-          <Reveal delay={0.12} className="mt-12 sm:mt-16 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-2 lg:mt-24">
+          <Reveal delay={0.12} className="mt-12 sm:mt-16 lg:col-span-4 lg:col-start-9 lg:row-span-3 lg:row-start-1 lg:mt-0 lg:self-start">
             <HeroImage
               src={`${import.meta.env.BASE_URL}images/shruti-portrait.jpg`}
               alt="Portrait of Shruti Kakani"
-              aspectRatio="4 / 5"
-              objectPosition="center 28%"
+              aspectRatio="3 / 4"
+              objectPosition="center"
               width={1200}
               height={1600}
-              className="mx-auto max-w-[32rem] lg:max-w-none"
+              className="mx-auto max-w-[32rem] lg:max-w-[27rem]"
             />
           </Reveal>
 
-          <div className="mt-9 lg:col-span-7 lg:row-start-3 lg:mt-12 lg:pr-8">
+          <div className="mt-9 lg:col-span-7 lg:row-start-3 lg:mt-10 lg:pr-8">
             <Reveal delay={0.16}>
               <p className="max-w-xl text-lg leading-8 text-muted sm:text-xl sm:leading-9">
                 I’m a Food Processing Technology student interested in developing food products,

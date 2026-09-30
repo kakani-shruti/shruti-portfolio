@@ -1,10 +1,12 @@
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '')
 
 export function getAppPathname(pathname = window.location.pathname) {
-  if (!basePath || basePath === '/') return pathname || '/'
-  if (pathname === basePath) return '/'
-  if (pathname.startsWith(`${basePath}/`)) return pathname.slice(basePath.length) || '/'
-  return pathname || '/'
+  let appPath = pathname || '/'
+  if (basePath && basePath !== '/') {
+    if (pathname === basePath) return '/'
+    if (pathname.startsWith(`${basePath}/`)) appPath = pathname.slice(basePath.length) || '/'
+  }
+  return appPath.length > 1 ? appPath.replace(/\/$/, '') : appPath
 }
 
 export function toAppUrl(path = '/') {

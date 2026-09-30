@@ -1,10 +1,11 @@
 import { ArrowRight } from 'lucide-react'
 import { Container } from '../layout/Container'
 import { projects } from '../../data/projects'
+import { toAppUrl } from '../../utils/routing'
 
 function navigate(event, href) {
   event.preventDefault()
-  window.history.pushState({}, '', href)
+  window.history.pushState({}, '', toAppUrl(href))
   window.dispatchEvent(new PopStateEvent('popstate'))
   window.scrollTo({ top: 0, behavior: 'auto' })
 }
@@ -21,10 +22,10 @@ export function ProjectNavigation({ project }) {
           <div className="text-sm text-muted">{project.number} / 04</div>
           <div className="flex items-end justify-between gap-8 sm:col-start-3 sm:justify-end">
             {previous ? (
-              <a href={previous.route} onClick={(event) => navigate(event, previous.route)} className="text-sm text-muted transition-colors hover:text-ink">← Previous Project</a>
+              <a href={toAppUrl(previous.route)} onClick={(event) => navigate(event, previous.route)} className="text-sm text-muted transition-colors hover:text-ink">← Previous Project</a>
             ) : <span className="text-sm text-line">—</span>}
             {next ? (
-              <a href={next.route} onClick={(event) => navigate(event, next.route)} className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink">Next Project <ArrowRight size={16} strokeWidth={1.5} /></a>
+              <a href={toAppUrl(next.route)} onClick={(event) => navigate(event, next.route)} className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink">Next Project <ArrowRight size={16} strokeWidth={1.5} /></a>
             ) : <span className="text-sm text-line">—</span>}
           </div>
         </div>

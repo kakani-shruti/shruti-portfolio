@@ -10,12 +10,13 @@ import { EducationSection } from './components/sections/EducationSection'
 import { ContactSection } from './components/sections/ContactSection'
 import { CaseStudyPage } from './components/case-study/CaseStudyPage'
 import { getProjectByRoute } from './data/projects'
+import { getAppPathname, getSiteUrl } from './utils/routing'
 
 function App() {
-  const [pathname, setPathname] = useState(window.location.pathname)
+  const [pathname, setPathname] = useState(() => getAppPathname())
 
   useEffect(() => {
-    const updatePath = () => setPathname(window.location.pathname)
+    const updatePath = () => setPathname(getAppPathname())
     window.addEventListener('popstate', updatePath)
     return () => window.removeEventListener('popstate', updatePath)
   }, [])
@@ -43,8 +44,8 @@ function App() {
     const description = activeProject
       ? activeProject.description
       : 'Portfolio of Shruti Kakani, a Food Processing Technology student exploring product development, formulation, food quality and research.'
-    const absoluteUrl = `${window.location.origin}${pathname}`
-    const socialImage = `${window.location.origin}/og-shruti-kakani.jpg`
+    const absoluteUrl = getSiteUrl(pathname)
+    const socialImage = getSiteUrl('/og-shruti-kakani.jpg')
 
     document.title = title
     setMeta('meta[name="description"]', 'content', description)

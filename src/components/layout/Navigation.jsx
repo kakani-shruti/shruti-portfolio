@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { AnimatePresence, motion as Motion, useReducedMotion } from 'framer-motion'
 import { Container } from './Container'
+import { getAppPathname, toAppUrl } from '../../utils/routing'
 
 const links = [
   { label: 'Home', href: '#main-content' },
@@ -14,16 +15,16 @@ const links = [
 export function Navigation() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(() => window.scrollY > 24)
-  const [activeSection, setActiveSection] = useState(() => window.location.pathname.startsWith('/work/') ? 'Work' : 'Home')
+  const [activeSection, setActiveSection] = useState(() => getAppPathname().startsWith('/work/') ? 'Work' : 'Home')
   const reduceMotion = useReducedMotion()
-  const onHomePage = window.location.pathname === '/'
+  const onHomePage = getAppPathname() === '/'
 
   useEffect(() => {
     const updateNavigation = () => {
       setScrolled(window.scrollY > 24)
 
       if (!onHomePage) {
-        setActiveSection(window.location.pathname.startsWith('/work/') ? 'Work' : 'Home')
+        setActiveSection(getAppPathname().startsWith('/work/') ? 'Work' : 'Home')
         return
       }
 
@@ -58,7 +59,7 @@ export function Navigation() {
       <header className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-500 ease-editorial ${scrolled ? 'border-b border-line bg-[rgba(243,239,230,0.9)] backdrop-blur-[8px]' : 'border-b border-transparent bg-transparent'}`}>
         <a href="#main-content" className="skip-link">Skip to content</a>
         <Container className={`flex items-center justify-between transition-[height] duration-500 ease-editorial ${scrolled ? 'h-[4.5rem]' : 'h-[5.25rem]'}`}>
-        <a href={onHomePage ? '#main-content' : '/#main-content'} className="group leading-none" aria-label="Shruti Kakani, home">
+        <a href={onHomePage ? '#main-content' : toAppUrl('/#main-content')} className="group leading-none" aria-label="Shruti Kakani, home">
           <span className="block font-display text-[1.4rem] tracking-[-0.02em] sm:text-[1.55rem]">Shruti Kakani</span>
           <span className={`mt-1.5 hidden text-[0.68rem] uppercase tracking-[0.15em] text-muted transition-[opacity,transform] duration-300 sm:block ${scrolled ? '-translate-y-0.5 opacity-0' : 'opacity-100'}`}>Food Processing Technology</span>
         </a>
@@ -67,7 +68,7 @@ export function Navigation() {
           {links.map((link) => (
             <a
               key={link.label}
-              href={onHomePage ? link.href : `/${link.href}`}
+              href={onHomePage ? link.href : toAppUrl(`/${link.href}`)}
               className={`nav-link ${activeSection === link.label ? 'text-ink' : ''}`}
               aria-current={activeSection === link.label ? 'page' : undefined}
             >
@@ -100,7 +101,7 @@ export function Navigation() {
               {links.map((link) => (
                 <a
                   key={link.label}
-                  href={onHomePage ? link.href : `/${link.href}`}
+                  href={onHomePage ? link.href : toAppUrl(`/${link.href}`)}
                   onClick={() => setOpen(false)}
                   className="block border-b border-line py-4 font-display text-3xl"
                   aria-current={activeSection === link.label ? 'page' : undefined}

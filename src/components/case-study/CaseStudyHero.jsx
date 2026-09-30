@@ -1,5 +1,6 @@
 import { ArrowLeft } from 'lucide-react'
 import { Container } from '../layout/Container'
+import { toAppUrl } from '../../utils/routing'
 import { Reveal } from '../motion/Reveal'
 import { ProjectImage } from '../ui/ProjectImage'
 
@@ -14,7 +15,7 @@ export function CaseStudyHero({ project }) {
     <header className="pb-20 pt-12 sm:pb-28 sm:pt-16 lg:pb-36 lg:pt-24">
       <Container>
         <Reveal>
-          <a href="/#work" className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink">
+          <a href={toAppUrl('/#work')} className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink">
             <ArrowLeft size={15} strokeWidth={1.5} aria-hidden="true" /> Selected Work
           </a>
         </Reveal>

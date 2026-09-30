@@ -5,6 +5,8 @@ export function HeroImage({
   alt = '',
   aspectRatio = '4 / 5',
   objectPosition = 'center',
+  width,
+  height,
   caption,
   className = '',
 }) {
@@ -20,6 +22,9 @@ export function HeroImage({
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
+                width={width}
+                height={height}
+                sizes="(min-width: 1024px) 40vw, (min-width: 640px) 32rem, calc(100vw - 2.5rem)"
                 className="h-full w-full object-cover"
                 style={{ objectPosition }}
               />

@@ -30,9 +30,12 @@ export function Hero() {
 
           <Reveal delay={0.12} className="mt-12 sm:mt-16 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-2 lg:mt-24">
             <HeroImage
-              alt="Space reserved for Shruti's professional portrait, food product, or laboratory photograph"
+              src={`${import.meta.env.BASE_URL}images/shruti-portrait.jpg`}
+              alt="Portrait of Shruti Kakani"
               aspectRatio="4 / 5"
-              caption="A professional portrait or a photograph from Shruti’s product-development work will appear here."
+              objectPosition="center 28%"
+              width={1200}
+              height={1600}
               className="mx-auto max-w-[32rem] lg:max-w-none"
             />
           </Reveal>

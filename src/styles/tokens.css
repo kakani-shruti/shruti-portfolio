@@ -1,0 +1,13 @@
+:root {
+  --color-canvas: #f3efe6;
+  --color-ink: #1d211d;
+  --color-muted: #66685f;
+  --color-olive: #64715a;
+  --color-olive-dark: #3e4a39;
+  --color-sand: #ded4c0;
+  --color-line: #d1cbbf;
+
+  --space-section: clamp(4rem, 9vw, 8rem);
+  --border-fine: 1px solid var(--color-line);
+  --transition-editorial: 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}

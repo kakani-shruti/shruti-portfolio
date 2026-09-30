@@ -1,0 +1,62 @@
+@import './tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--color-canvas);
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: 'DM Sans', Arial, sans-serif;
+    font-size: 16px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  [id] { scroll-margin-top: 6rem; }
+
+  ::selection { background: var(--color-olive); color: var(--color-canvas); }
+
+  a, button { outline-offset: 4px; }
+  :focus-visible { outline: 1px solid var(--color-olive-dark); }
+}
+
+@layer components {
+  .technical-label {
+    @apply text-xs font-medium uppercase tracking-[0.13em] text-muted;
+  }
+
+  .nav-link {
+    @apply relative py-2 text-sm text-muted transition-colors duration-300 hover:text-ink;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-px w-0 bg-olive transition-all duration-300;
+  }
+
+  .nav-link:hover::after { @apply w-full; }
+
+  .skip-link {
+    @apply fixed left-4 top-3 z-[100] -translate-y-20 bg-ink px-4 py-3 text-sm text-canvas transition-transform focus:translate-y-0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
